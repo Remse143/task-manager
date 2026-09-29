@@ -2,100 +2,110 @@
 
 @section('content')
 
-<div class="details-card">
+<div class="container">
 
-    <h1>
-        {{ $task->title }}
-    </h1>
+    <div class="details-card">
+
+        <h1>Add New Task</h1>
+
+        <form action="{{ route('tasks.store') }}" method="POST">
+
+            @csrf
+
+            <!-- Task Name -->
+            <div class="form-group">
+
+                <label for="task_name">
+                    Task Name
+                </label>
+
+                <input
+                    type="text"
+                    id="task_name"
+                    name="task_name"
+                    value="{{ old('task_name') }}"
+                    placeholder="Enter task name"
+                    required
+                >
+
+                @error('task_name')
+                    <span class="error">
+                        {{ $message }}
+                    </span>
+                @enderror
+
+            </div>
 
 
-    <div class="detail-row">
+            <!-- Description -->
+            <div class="form-group">
 
-        <strong>
-            Status
-        </strong>
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="5"
+                    placeholder="Enter task description"
+                >{{ old('description') }}</textarea>
+
+                @error('description')
+                    <span class="error">
+                        {{ $message }}
+                    </span>
+                @enderror
+
+            </div>
 
 
-        @if($task->status == 'Completed')
+            <!-- Due Date -->
+            <div class="form-group">
 
-            <span class="status status-completed">
-                Completed
-            </span>
+                <label for="due_date">
+                    Due Date
+                </label>
 
-        @else
+                <input
+                    type="date"
+                    id="due_date"
+                    name="due_date"
+                    value="{{ old('due_date') }}"
+                >
 
-            <span class="status status-pending">
-                Pending
-            </span>
+                @error('due_date')
+                    <span class="error">
+                        {{ $message }}
+                    </span>
+                @enderror
 
-        @endif
+            </div>
+
+
+            <!-- Buttons -->
+            <div class="form-buttons">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Add Task
+                </button>
+
+
+                <a
+                    href="{{ route('tasks.index') }}"
+                    class="btn btn-secondary"
+                >
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
 
     </div>
-
-
-    <div class="detail-row">
-
-        <strong>
-            Description
-        </strong>
-
-        <p>
-            {{ $task->description ?? 'No description provided.' }}
-        </p>
-
-    </div>
-
-
-    <div class="detail-row">
-
-        <strong>
-            Due Date
-        </strong>
-
-        <p>
-
-            @if($task->due_date)
-
-                {{ \Carbon\Carbon::parse($task->due_date)->format('F d, Y') }}
-
-            @else
-
-                No due date
-
-            @endif
-
-        </p>
-
-    </div>
-
-
-    <div class="detail-row">
-
-        <strong>
-            Created
-        </strong>
-
-        <p>
-            {{ $task->created_at->format('F d, Y h:i A') }}
-        </p>
-
-    </div>
-
-
-    <a href="{{ route('tasks.edit', $task) }}"
-       class="btn btn-warning">
-
-        Edit
-
-    </a>
-
-
-    <a href="{{ route('tasks.index') }}"
-       class="btn btn-secondary">
-
-        Back
-
-    </a>
 
 </div>
 

@@ -40,71 +40,76 @@
             @method('PUT')
 
 
+            <!-- Task Name -->
             <div class="form-group">
 
-                <label>
-                    Task Title
+                <label for="task_name">
+                    Task Name
                 </label>
 
                 <input
                     type="text"
-                    name="title"
+                    id="task_name"
+                    name="task_name"
                     class="form-control"
-                    value="{{ $task->title }}"
+                    value="{{ old('task_name', $task->task_name) }}"
                     required>
 
             </div>
 
 
+            <!-- Description -->
             <div class="form-group">
 
-                <label>
+                <label for="description">
                     Description
                 </label>
 
                 <textarea
+                    id="description"
                     name="description"
-                    class="form-control">{{ $task->description }}</textarea>
+                    class="form-control">{{ old('description', $task->description) }}</textarea>
 
             </div>
 
 
+            <!-- Due Date -->
             <div class="form-group">
 
-                <label>
+                <label for="due_date">
                     Due Date
                 </label>
 
                 <input
                     type="date"
+                    id="due_date"
                     name="due_date"
                     class="form-control"
-                    value="{{ $task->due_date }}">
+                    value="{{ old('due_date', $task->due_date) }}">
 
             </div>
 
 
+            <!-- Status -->
             <div class="form-group">
 
-                <label>
+                <label for="status">
                     Status
                 </label>
 
-                <select name="status"
-                        class="form-control">
+                <select
+                    id="status"
+                    name="status"
+                    class="form-control">
 
                     <option value="Pending"
-                        {{ $task->status == 'Pending' ? 'selected' : '' }}>
-
+                        {{ old('status', $task->status) == 'Pending' ? 'selected' : '' }}>
                         Pending
-
                     </option>
 
                     <option value="Completed"
-                        {{ $task->status == 'Completed' ? 'selected' : '' }}>
-
+                        {{ old('status', $task->status) == 'Completed' ? 'selected' : '' }}>
                         Completed
-
                     </option>
 
                 </select>
@@ -112,6 +117,7 @@
             </div>
 
 
+            <!-- Buttons -->
             <button type="submit"
                     class="btn btn-primary">
 

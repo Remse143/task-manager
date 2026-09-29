@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class TasksController extends Controller
 {
-    // Show all tasks
     public function index()
     {
         $tasks = Task::latest()->get();
@@ -15,23 +14,21 @@ class TasksController extends Controller
         return view('tasks.index', compact('tasks'));
     }
 
-    // Show Add Task page
     public function create()
     {
         return view('tasks.create');
     }
 
-    // Save new task
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:255',
+            'task_name' => 'required|max:255',
             'description' => 'nullable',
             'due_date' => 'nullable|date',
         ]);
 
         Task::create([
-            'title' => $request->title,
+            'task_name' => $request->task_name,
             'description' => $request->description,
             'due_date' => $request->due_date,
             'status' => 'Pending',
@@ -42,30 +39,27 @@ class TasksController extends Controller
             ->with('success', 'Task added successfully!');
     }
 
-    // Show one task
     public function show(Task $task)
     {
         return view('tasks.show', compact('task'));
     }
 
-    // Show Edit page
     public function edit(Task $task)
     {
         return view('tasks.edit', compact('task'));
     }
 
-    // Update task
     public function update(Request $request, Task $task)
     {
         $request->validate([
-            'title' => 'required|max:255',
+            'task_name' => 'required|max:255',
             'description' => 'nullable',
             'due_date' => 'nullable|date',
             'status' => 'required|in:Pending,Completed',
         ]);
 
         $task->update([
-            'title' => $request->title,
+            'task_name' => $request->task_name,
             'description' => $request->description,
             'due_date' => $request->due_date,
             'status' => $request->status,
@@ -76,7 +70,6 @@ class TasksController extends Controller
             ->with('success', 'Task updated successfully!');
     }
 
-    // Delete task
     public function destroy(Task $task)
     {
         $task->delete();
@@ -86,7 +79,6 @@ class TasksController extends Controller
             ->with('success', 'Task deleted successfully!');
     }
 
-    // Mark task as completed
     public function complete(Task $task)
     {
         $task->update([

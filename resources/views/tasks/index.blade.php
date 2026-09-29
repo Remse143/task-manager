@@ -16,9 +16,7 @@
 
         <a href="{{ route('tasks.create') }}"
            class="btn btn-primary">
-
             + Add Task
-
         </a>
 
     </div>
@@ -27,9 +25,7 @@
     @if(session('success'))
 
         <div class="alert alert-success">
-
             {{ session('success') }}
-
         </div>
 
     @endif
@@ -44,7 +40,7 @@
                 <div class="task-card">
 
                     <h2>
-                        {{ $task->title }}
+                        {{ $task->task_name }}
                     </h2>
 
 
@@ -73,13 +69,9 @@
                     @if($task->due_date)
 
                         <p>
-
                             📅
-
                             <strong>Due:</strong>
-
                             {{ \Carbon\Carbon::parse($task->due_date)->format('M d, Y') }}
-
                         </p>
 
                     @endif
@@ -89,17 +81,13 @@
 
                         <a href="{{ route('tasks.show', $task) }}"
                            class="btn btn-info">
-
                             View
-
                         </a>
 
 
                         <a href="{{ route('tasks.edit', $task) }}"
                            class="btn btn-warning">
-
                             Edit
-
                         </a>
 
 
@@ -109,13 +97,10 @@
                                   method="POST">
 
                                 @csrf
-
                                 @method('PUT')
 
                                 <button class="btn btn-success">
-
                                     Done
-
                                 </button>
 
                             </form>
@@ -128,13 +113,10 @@
                               onsubmit="return confirm('Are you sure you want to delete this task?');">
 
                             @csrf
-
                             @method('DELETE')
 
                             <button class="btn btn-danger">
-
                                 Delete
-
                             </button>
 
                         </form>
@@ -159,9 +141,7 @@
 
             <a href="{{ route('tasks.create') }}"
                class="btn btn-primary">
-
                 Create Your First Task
-
             </a>
 
         </div>
