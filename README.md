@@ -4,20 +4,30 @@
   <img src="https://laravel.com/img/logomark.min.svg" width="100" alt="Laravel Logo">
 </p>
 
-## Project Description
+## Project Code
 
-Project Code: WST21-PM-2026-SF
-Student Name:SIBAY,REMSERT C.
-Course & Year:BSIT - 2ND YEAR
+WST21-PM-2026-SF
+
+## Student Name
+
+SIBAY, REMSERT C.
+
+## Course & Year
+
+BSIT - 2ND YEAR
 
 ## Features
 
-- Add a new task
-- View all tasks
-- Edit existing tasks
-- Delete tasks
-- Store task information in a database
-- Simple and user-friendly interface
+- Add Task
+- View Tasks
+- Edit Task
+- Delete Task
+- Update Task Status
+- Set Due DatE
+
+## Database Used
+
+- MySQL
 
 ## Technologies Used
 
@@ -29,21 +39,16 @@ Course & Year:BSIT - 2ND YEAR
 - CSS
 - Bootstrap
 
-## System Flow
+## Screenshots
 
-The system follows the basic Laravel structure:
+### Task List
+![Task List](Screenshots/task-list.png)
 
-```text
-User
-  ↓
-Route
-  ↓
-Controller
-  ↓
-Model
-  ↓
-MySQL Database
-  ↓
-View (Blade)
-  ↓
-User
+### Add Task
+![Add Task](Screenshots/add-task.png)
+
+### Edit Task
+![Edit Task](Screenshots/edit-task.png)
+
+### Task Details
+![Task Details](Screenshots/task-details.png)
